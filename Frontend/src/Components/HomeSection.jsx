@@ -45,6 +45,7 @@ const Home = () => {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         minHeight: "100vh", // full screen height
+        backgroundRepeat: "no-repeat", 
       }}
     >
       <div className="home-content">
