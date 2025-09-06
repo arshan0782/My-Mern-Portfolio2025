@@ -3,42 +3,8 @@ import yourImage from '../assets/arshanart.jpg'
 import { FiAward } from "react-icons/fi";
 import { FaUserTie } from "react-icons/fa";
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// ✅ ScrollTrigger register karna zaroori haiimport { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
-  const experienceRef = useRef(null);
-  const educationRef = useRef(null);
-
-  useEffect(() => {
-    // Experience Card → Left se enter
-    gsap.from(experienceRef.current, {
-      scrollTrigger: {
-        trigger: experienceRef.current,
-        start: "top 80%", // viewport ka 80% tak
-      },
-      x: -200,        // left side se
-      opacity: 0,     
-      duration: 1,    
-      ease: "power3.out",
-    });
-
-    // Education Card → Right se enter
-    gsap.from(educationRef.current, {
-      scrollTrigger: {
-        trigger: educationRef.current,
-        start: "top 80%",
-      },
-      x: 200,         // right side se
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-  }, []);
 
   return (
     <section id="about">
