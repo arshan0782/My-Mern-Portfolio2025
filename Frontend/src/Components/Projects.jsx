@@ -15,7 +15,7 @@ const Projects = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.3, 
+        staggerChildren: 0.3,
       },
     },
   };
@@ -49,7 +49,16 @@ const Projects = () => {
           whileHover={{ scale: 1.05 }}
         >
           <div className="project-img">
-            <img src={project1} alt="Restaurant Web" />
+            <motion.img
+              src={project1}
+              alt="Restaurant Web"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
             <div className="projectlink">
               <a
                 href="https://github.com/arshan0782/Restaurant-Food-Ordering-Reservation-Web"
@@ -65,9 +74,9 @@ const Projects = () => {
             <h3>Restaurant Food Ordering & Reservation Web</h3>
             <span>(Online Ordering & Reservations)</span>
             <p>
-              Designed an engaging restaurant web app where users get attracted by
-              a delicious menu, easily place food orders, and reserve tables by
-              filling a simple contact form with a smooth success flow.
+              Designed an engaging restaurant web app where users get attracted
+              by a delicious menu, easily place food orders, and reserve tables
+              by filling a simple contact form with a smooth success flow.
             </p>
             <ul>
               <li>#MERN</li>
@@ -90,7 +99,16 @@ const Projects = () => {
           whileHover={{ scale: 1.05 }}
         >
           <div className="project-img">
-            <img src={project2} alt="EMS" />
+            <motion.img
+              src={project2}
+              alt="EMS"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
             <div className="projectlink">
               <a
                 href="https://arshan0782.github.io/Dice-Roller/"
@@ -103,15 +121,18 @@ const Projects = () => {
             </div>
           </div>
           <div className="project-details">
-            <h3 style={{ color: "#663399" }}>Employee Management System (EMS)</h3>
+            <h3 style={{ color: "#663399" }}>
+              Employee Management System (EMS)
+            </h3>
             <span style={{ color: "#663399" }}>
               (Admin & Employee Task Workflow)
             </span>
             <p>
-              Developed a secure EMS with Admin and Employee login authentication.
-              Admin can create and assign tasks, while employees can accept, work
-              on, and submit them. Includes real-time task status tracking (New,
-              Active, Completed, Failed) with a clean dashboard UI.
+              Developed a secure EMS with Admin and Employee login
+              authentication. Admin can create and assign tasks, while employees
+              can accept, work on, and submit them. Includes real-time task
+              status tracking (New, Active, Completed, Failed) with a clean
+              dashboard UI.
             </p>
             <ul>
               <li>#EMS</li>
@@ -119,8 +140,6 @@ const Projects = () => {
               <li>#NodeJS</li>
               <li>#MongoDB</li>
               <li>#Authentication</li>
-              <li>#imagesDice</li>
-              <li>#javascript</li>
               <li>#TaskManagement</li>
               <li>#CompleteTask</li>
             </ul>
@@ -134,7 +153,16 @@ const Projects = () => {
           whileHover={{ scale: 1.05 }}
         >
           <div className="project-img">
-            <img src={project3} alt="Dice-Roller" />
+            <motion.img
+              src={project3}
+              alt="Dice-Roller"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
             <div className="projectlink">
               <a
                 href="https://arshan0782.github.io/Dice-Roller/"
@@ -159,9 +187,6 @@ const Projects = () => {
               <li>#JavaScript</li>
               <li>DiceRoller</li>
               <li>#FunProject</li>
-              <li>#imagesDice</li>
-              <li>#javascript</li>
-              <li>#figma</li>
             </ul>
           </div>
         </motion.div>
@@ -173,7 +198,17 @@ const Projects = () => {
           whileHover={{ scale: 1.05 }}
         >
           <div className="project-img">
-            <img src={project4} alt="ProdigyData" />
+            <motion.img
+              src={project4}
+              alt="ProdigyData"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{
+                duration: 7,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              }}
+            />
             <div className="projectlink">
               <a
                 href="https://github.com/arshan0782/PRODIGGY_DS_01/"
@@ -193,18 +228,15 @@ const Projects = () => {
             <p>
               Designed an interactive Power BI dashboard to analyze global based
               population trends. Integrated various datasets to display insights
-              on country-wise populations, income-based rankings, and demographic
-              distributions.
+              on country-wise populations, income-based rankings, and
+              demographic distributions.
             </p>
             <ul>
               <li>#PowerBI</li>
               <li>#DataAnalytics</li>
-              <li>#swiper.js</li>
               <li>#DAX</li>
-              <li>#mongoose</li>
               <li>#Dashboard</li>
               <li>#Excel</li>
-              <li>#excelformulae</li>
             </ul>
           </div>
         </motion.div>

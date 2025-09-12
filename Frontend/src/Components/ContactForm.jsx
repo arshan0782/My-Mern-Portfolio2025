@@ -24,7 +24,6 @@ const Contact = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Frontend Validations
     if (!formData.name.trim()) {
       Swal.fire("Error", "Please enter your name", "error");
       return;
@@ -43,13 +42,16 @@ const Contact = () => {
     }
 
     try {
-      const res = await fetch("https://my-mern-portfolio2025.vercel.app/contact/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://my-mern-portfolio2025.vercel.app/contact/send",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!res.ok) {
         throw new Error(`Server error: ${res.status}`);
@@ -65,7 +67,11 @@ const Contact = () => {
         });
         setFormData({ name: "", number: "", email: "", message: "" });
       } else {
-        Swal.fire("Error", "Failed to send message. Please try again.", "error");
+        Swal.fire(
+          "Error",
+          "Failed to send message. Please try again.",
+          "error"
+        );
       }
     } catch (error) {
       console.error("Error:", error);
@@ -76,7 +82,7 @@ const Contact = () => {
       });
     }
   };
-  
+
   // Animation variants
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -96,26 +102,40 @@ const Contact = () => {
   };
 
   return (
-    <motion.section 
-      id="contact" 
+    <motion.section
+      id="contact"
       ref={ref}
       variants={sectionVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
       <motion.h2 variants={itemVariants}>Contact</motion.h2>
-      <motion.img 
-        src={contactSvg} 
-        alt="contact_img" 
+
+    
+      <motion.img
+        src={contactSvg}
+        alt="contact_img"
+        className="contact-image"
         variants={itemVariants}
+        animate={{
+          y: [0, -15, 0, 15, 0], 
+          scale: [1, 1.05, 1, 1.05, 1], 
+          rotate: [0, 2, 0, -2, 0], 
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        whileHover={{
+          scale: 1.1,
+          rotate: 3,
+          boxShadow: "0px 0px 20px rgba(0, 171, 240, 0.6)", // glowing hover
+        }}
       />
-      
-      <motion.div 
-        className="contact-form"
-        variants={itemVariants}
-      >
+
+      <motion.div className="contact-form" variants={itemVariants}>
         <form onSubmit={handleSubmit} autoComplete="off">
-          {/* Each form input can also be animated individually */}
           <input
             type="text"
             id="name"
@@ -160,4 +180,5 @@ const Contact = () => {
     </motion.section>
   );
 };
+
 export default Contact;
