@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import contactSvg from "../assets/contact-me.svg";
 import Swal from "sweetalert2";
 
 const Contact = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const [formData, setFormData] = useState({
     name: "",
     number: "",
@@ -47,29 +51,24 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
-      // Check response status (200–299 = OK)
       if (!res.ok) {
         throw new Error(`Server error: ${res.status}`);
       }
 
       const data = await res.json();
 
-     
       if (data.success) {
         Swal.fire({
           title: "Message sent successfully!!",
           icon: "success",
           draggable: true,
         });
-        setFormData({ name: "", number: "", email: "", message: "" }); 
+        setFormData({ name: "", number: "", email: "", message: "" });
       } else {
-      
         Swal.fire("Error", "Failed to send message. Please try again.", "error");
       }
     } catch (error) {
       console.error("Error:", error);
-
-      // Server error ya network error case
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -77,13 +76,46 @@ const Contact = () => {
       });
     }
   };
+  
+  // Animation variants
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
-    <section id="contact">
-      <h2>Contact</h2>
-      <img src={contactSvg} alt="contact_img" />
-      <div className="contact-form">
+    <motion.section 
+      id="contact" 
+      ref={ref}
+      variants={sectionVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
+      <motion.h2 variants={itemVariants}>Contact</motion.h2>
+      <motion.img 
+        src={contactSvg} 
+        alt="contact_img" 
+        variants={itemVariants}
+      />
+      
+      <motion.div 
+        className="contact-form"
+        variants={itemVariants}
+      >
         <form onSubmit={handleSubmit} autoComplete="off">
+          {/* Each form input can also be animated individually */}
           <input
             type="text"
             id="name"
@@ -91,7 +123,7 @@ const Contact = () => {
             onChange={handleChange}
             placeholder="Enter Your Name"
             required
-            autoComplete="off" 
+            autoComplete="off"
           />
           <input
             type="text"
@@ -124,8 +156,8 @@ const Contact = () => {
           ></textarea>
           <button type="submit">Send Message</button>
         </form>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 export default Contact;

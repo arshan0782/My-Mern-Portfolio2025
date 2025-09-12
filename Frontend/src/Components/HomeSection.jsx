@@ -42,9 +42,14 @@ const Home = () => {
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "top center",
         backgroundRepeat: "no-repeat",
-        minHeight: "100vh", // full screen height
+        minHeight: "100vh",
+        display: "flex",
+        backgroundAttachment: "fixed",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        paddingLeft: "60px",
       }}
     >
       <div className="home-content">

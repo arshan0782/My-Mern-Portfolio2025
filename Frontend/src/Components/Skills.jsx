@@ -1,65 +1,79 @@
 import React from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from "react";
 
 const Skills = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const skillVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
+  };
+
+  const progressVariants = {
+    hidden: { width: "0%" },
+    visible: (percentage) => ({
+      width: `${percentage}%`,
+      transition: {
+        duration: 1.5,
+        ease: "easeInOut",
+      },
+    }),
+  };
+
+  const skillsData = [
+    { name: 'HTML5', percentage: 90, color: '#2ad42a' },
+    { name: 'CSS3', percentage: 80, color: '#264de4' },
+    { name: 'JavaScript (ES6+)', percentage: 60, color: '#f0db4f' },
+    { name: 'React.js', percentage: 80, color: '#61dafb' },
+    { name: 'Git & GitHub', percentage: 60, color: '#f1502f' },
+    { name: 'Python', percentage: 70, color: '#306998' },
+    { name: 'Power BI', percentage: 75, color: '#f2c811' },
+    { name: 'TypeScript', percentage: 65, color: '#f29111' },
+    { name: 'MongoDB', percentage: 70, color: '#4db33d' },
+    { name: 'Responsive Web Design', percentage: 80, color: '#33cc33' },
+    
+  ];
+
   return (
-    <section id="skills">
+    <section id="skills" ref={ref}>
       <h2>Skills</h2>
-      <div className="skills">
-        <div className="skill">
-          <p>HTML5</p>
-          <div className="progress-bar">
-            <div className="progress html">90%</div>
-          </div>
-        </div>
-        <div className="skill">
-          <p>CSS3</p>
-          <div className="progress-bar">
-            <div className="progress css">80%</div>
-          </div>
-        </div>
-        <div className="skill">
-          <p>JavaScript (ES6+)</p>
-          <div className="progress-bar">
-            <div className="progress js">60%</div>
-          </div>
-        </div>
-        <div className="skill">
-          <p>React.js</p>
-          <div className="progress-bar">
-            <div className="progress react">80%</div>
-          </div>
-        </div>
-        <div className="skill">
-          <p>Git & GitHub</p>
-          <div className="progress-bar">
-            <div className="progress git">60%</div>
-          </div>
-        </div>
-        <div className="skill">
-          <p>Responsive Web Design</p>
-          <div className="progress-bar">
-            <div className="progress rwd">80%</div>
-          </div>
-        </div>
-        <div className="skill">
-          <p>Python</p>
-          <div className="progress-bar">
-            <div className="progress python">70%</div>
-          </div>
-        </div>
-        <div className="skill">
-          <p>Excel</p>
-          <div className="progress-bar">
-            <div className="progress excel">85%</div>
-          </div>
-        </div>
-        <div className="skill">
-          <p>Power BI</p>
-          <div className="progress-bar">
-            <div className="progress powerbi">75%</div>
-          </div>
-        </div>
-      </div>
+      <motion.div
+        className="skills"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        {skillsData.map((skill, index) => (
+          <motion.div
+            className="skill"
+            key={index}
+            variants={skillVariants}
+          >
+            <p>{skill.name}</p>
+            <div className="progress-bar">
+              <motion.div
+                className="progress"
+                style={{ width: 0, backgroundColor: skill.color }} 
+                variants={progressVariants}
+                custom={skill.percentage}
+              >
+                {skill.percentage}%
+              </motion.div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 };
