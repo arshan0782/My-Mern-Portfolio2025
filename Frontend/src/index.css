@@ -110,7 +110,7 @@ body {
   z-index: 1001;
 }
 
-/* #home {
+ #home {
   display: flex;
   background-image: url("./arshanhome_pic\ 1.svg"); 
   background-size: cover;
@@ -121,7 +121,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   padding-left: 60px;
-} */
+} 
 
 #home::after {
   position: absolute;
