@@ -15,7 +15,7 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 app.use(cors({
-    origin:'http://localhost:5173',
+    origin:'https://mohdarshan782.netlify.app/',
     method: ["POST"],
     credentials: true,
 })
