@@ -43,7 +43,7 @@ const Contact = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3001/contact/send", {
+      const res = await fetch("https://my-mern-portfolio2025.vercel.app/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
