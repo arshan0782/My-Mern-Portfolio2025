@@ -83,7 +83,7 @@ const Contact = () => {
     }
   };
 
-  // Animation variants
+  
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -130,7 +130,7 @@ const Contact = () => {
         whileHover={{
           scale: 1.1,
           rotate: 3,
-          boxShadow: "0px 0px 20px rgba(0, 171, 240, 0.6)", // glowing hover
+          boxShadow: "0px 0px 20px rgba(0, 171, 240, 0.6)", 
         }}
       />
 

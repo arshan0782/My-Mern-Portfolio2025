@@ -2,9 +2,7 @@ body {
   overflow-x: hidden;
 }
 @media (max-width: 768px) {
-  .preload img {
-    width: 100px;
-  }
+ 
   header {
     padding-bottom: 2rem;
     min-height: 50px;
@@ -423,4 +421,5 @@ body {
     height: 400px;
   }
 }
+
 

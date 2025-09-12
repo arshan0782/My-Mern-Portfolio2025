@@ -111,7 +111,7 @@ const Projects = () => {
             />
             <div className="projectlink">
               <a
-                href="https://arshan0782.github.io/Dice-Roller/"
+                href="https://github.com/arshan0782/Employee-Management-Task"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="visit-site"
