@@ -124,7 +124,7 @@ const Contact = () => {
         }}
         transition={{
           duration: 6,
-          repeat: Infinity,
+          repeat: Infinity, 
           ease: "easeInOut",
         }}
         whileHover={{

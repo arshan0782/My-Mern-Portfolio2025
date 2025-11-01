@@ -1,9 +1,6 @@
-import React from 'react';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { FaLinkedinIn } from "react-icons/fa";
-import { TfiEmail } from "react-icons/tfi";
-import { FaGithub } from "react-icons/fa";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { footerData } from "../data/projectData";
 
 const Footer = () => {
   const ref = useRef(null);
@@ -14,18 +11,11 @@ const Footer = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-        staggerChildren: 0.2, 
-      },
+      transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 },
     },
   };
 
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+  const sectionVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 
   return (
     <motion.footer
@@ -36,57 +26,63 @@ const Footer = () => {
       animate={isInView ? "visible" : "hidden"}
     >
       <div className="container">
-      
+        {/* Quick Links */}
         <motion.div className="footer-section" variants={sectionVariants}>
           <h3>Quick Link</h3>
           <ul>
-            <li><a href="#home" className="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#project">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            {footerData.quickLinks.map((link) => (
+              <li key={link.id}>
+                <a href={link.href} className={link.href === "#home" ? "active" : ""}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </motion.div>
 
-       
+        {/* Contacts */}
         <motion.div className="footer-section" variants={sectionVariants}>
           <h3>Contact</h3>
-          <p>
-            📞<a href="https://wa.me/918279460782" target="_blank" rel="noopener noreferrer">Join whatsapp</a>
-          </p>
-          <p>📩<a href="https://t.me/arshan77777" target="_blank" rel="noopener noreferrer">Join Telegram</a></p>
-          <p>
-            📧<a href="mailto:arshan0782@gmail.com">arshan0782@gmail.com</a>
-          </p>
+          {footerData.contacts.map((contact) => {
+            const Icon = contact.icon;
+            return (
+              <p key={contact.id}>
+                {Icon && <Icon />} 
+                <a href={contact.href} target="_blank" rel="noopener noreferrer">
+                  {contact.value}
+                </a>
+              </p>
+            );
+          })}
+
           <div className="footerContact-icons">
-            <motion.a href="https://www.linkedin.com/in/mohd-arshan-0786as" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2 }}>
-              <FaLinkedinIn />
-            </motion.a>
-            <motion.a href="mailto:arshan0782@gmail.com" whileHover={{ scale: 1.2 }}>
-              <TfiEmail />
-            </motion.a>
-            <motion.a href="https://github.com/arshan0782" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2 }}>
-              <FaGithub />
-            </motion.a>
+            {footerData.socialIcons.map((social) => {
+              const Icon = social.icon;
+              return (
+                <motion.a
+                  key={social.id}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2 }}
+                >
+                  <Icon />
+                </motion.a>
+              );
+            })}
           </div>
         </motion.div>
 
+        {/* Intro */}
         <motion.div className="footer-section" variants={sectionVariants}>
           <h3>Quick Intro !!</h3>
-          <p id="p">
-            Hey there!👋 I'm Mohd Arshan, a Frontend Developer passionate about
-            crafting interactive and user-friendly web applications. I
-            specialize in HTML, CSS, JavaScript, and React.js focusing on modern
-            UI/UX designs with responsive and efficient performance. I have
-            worked on various projects, building real-world solutions and
-            exploring the latest web technologies. Always eager to learn and
-            create something innovative!
-          </p>
+          <p>{footerData.intro}</p>
         </motion.div>
       </div>
 
+      {/* Footer Bottom */}
       <div className="footer-bottom">
-        <p>&copy; 2025 All Rights Reserved Mohd Arshan.</p>
+        <p>{footerData.copyright}</p>
       </div>
     </motion.footer>
   );
