@@ -34,14 +34,14 @@ const Skills = () => {
   const skillsData = [
     { name: 'HTML5', percentage: 90, color: '#2ad42a' },
     { name: 'CSS3', percentage: 80, color: '#264de4' },
-    { name: 'JavaScript (ES6+)', percentage: 60, color: '#f0db4f' },
-    { name: 'React.js', percentage: 80, color: '#61dafb' },
+    { name: 'JavaScript (ES6+)', percentage: 80, color: '#f0db4f' },
+    { name: 'React.js', percentage: 85, color: '#61dafb' },
     { name: 'Git & GitHub', percentage: 60, color: '#f1502f' },
     { name: 'Python', percentage: 70, color: '#306998' },
-    { name: 'Power BI', percentage: 75, color: '#f2c811' },
-    { name: 'TypeScript', percentage: 65, color: '#f29111' },
-    { name: 'MongoDB', percentage: 70, color: '#4db33d' },
-    { name: 'Responsive Web Design', percentage: 80, color: '#33cc33' },
+    { name: 'Power BI', percentage: 50, color: '#f2c811' },
+    { name: 'TypeScript', percentage: 60, color: '#f29111' },
+    { name: 'MongoDB', percentage: 80, color: '#4db33d' },
+    { name: 'Responsive Web Design', percentage: 85, color: '#33cc33' },
     
   ];
 
